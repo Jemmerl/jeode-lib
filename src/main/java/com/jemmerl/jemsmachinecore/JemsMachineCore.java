@@ -1,11 +1,14 @@
 package com.jemmerl.jemsmachinecore;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import com.jemmerl.jemsmachinecore.client.gui.screen.TestScreen;
+import com.jemmerl.jemsmachinecore.init.JMCBlocks;
+import com.jemmerl.jemsmachinecore.init.JMCContainers;
+import com.jemmerl.jemsmachinecore.init.JMCItems;
+import com.jemmerl.jemsmachinecore.init.JMCTileEntities;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -16,18 +19,24 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.stream.Collectors;
-
 @Mod("jemsmachinecore")
 public class JemsMachineCore
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "jemsmachinecore";
 
     public JemsMachineCore() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        JMCBlocks.register(eventBus);
+        JMCItems.register(eventBus);
+        JMCTileEntities.register(eventBus);
+        JMCContainers.register(eventBus);
+
+        eventBus.addListener(this::setup);
+        eventBus.addListener(this::enqueueIMC);
+        eventBus.addListener(this::processIMC);
+        eventBus.addListener(this::doClientStuff);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -37,7 +46,7 @@ public class JemsMachineCore
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-
+        ScreenManager.registerFactory(JMCContainers.TEST_CONTAINER.get(), TestScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

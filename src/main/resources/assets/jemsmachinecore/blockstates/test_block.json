@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "jemsmachinecore:block/test_block"
+    }
+  }
+}

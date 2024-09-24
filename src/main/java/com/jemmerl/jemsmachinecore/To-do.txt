@@ -1,0 +1,58 @@
+GUI Elements needed, aka machine features
+
+Zones:
+
+By default, the GUI has one zone. Otherwise, smaller zones are nested one level deep inside the main outer zone.
+
+The outer zone holds global properties, and all zones hold local.
+    - E.G. the main zone holds the power, which is shared to all the smaller local zones.
+      All zones have an independent temperature, including the main outer zone
+      (consider this the machine "case"), and can propagate temperature between them.
+      Basically, remember that's the global zone is local to itself as well
+
+
+-------------------------------
+Zone Properties:
+
+
+Global Only:
+- Power (VERTICAL)
+- Belt Speed (HORIZ TEXT)
+
+Local:
+- Temperature (HORIZ TEXT)
+- Pressure (HORIZ TEXT)
+- RPM (HORIZ TEXT)
+- Torque? (HORIZ TEXT)
+- Processing Progress (GUI HOVER ELEMENT)
+
+--------------------------------
+Zone Elements available:
+
+Global Only:
+-
+
+Local:
+- Item I/O (SLOTS)
+    - Includes "catalyst" slots if needed (catalysts could be materials or recipes, just something not consumed but needed)
+- Fluids I/O
+    - Storage Tank (VERTICAL)
+    - I/O Slot (SLOTS)
+*** Include colors to indicate I/O like TE does?
+
+
+- Tool (SLOTS)
+
+- Process Progress indicator (arrow is classic, but can be changed)
+    - Hover over to see relevant data, like time left or time out of time left
+
+- Sensors / Reactionaries (SLOTS)
+    - Redstone behavior chips
+        * E.G. how will this zone react to a redstone signal
+    - Property Sensors (Before a temperature sensor is added, or even "better" ones, data will be non-existent to less accurate
+        * E.G. "cold, warm, hot" -> "10, 20, 30" -> "11.3, 15.2, 103.5"
+        * Some properties will have visual indicators, these may or may not need an item with the right sensing capability
+        * Sensors can do things like output sounds
+        * Senors may be able to be tuned
+    - Fuses (Will turn the zone/system off when a condition is met as a fail safe)
+        * Could be multi-use or single use
