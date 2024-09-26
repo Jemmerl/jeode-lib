@@ -1,7 +1,7 @@
-package com.jemmerl.jemsmachinecore.init;
+package com.jemmerl.jemsmachinecore.test.init;
 
 import com.jemmerl.jemsmachinecore.JemsMachineCore;
-import com.jemmerl.jemsmachinecore.block.TestBlock;
+import com.jemmerl.jemsmachinecore.test.block.TestBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
 
-public class JMCBlocks {
+public class TestModBlocks {
     public static final DeferredRegister<Block> BLOCKS
             = DeferredRegister.create(ForgeRegistries.BLOCKS, JemsMachineCore.MOD_ID);
 
@@ -31,7 +31,7 @@ public class JMCBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, int stackSize, ItemGroup itemGroup) {
-        JMCItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+        TestModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().group(itemGroup).maxStackSize(stackSize)));
     }
 

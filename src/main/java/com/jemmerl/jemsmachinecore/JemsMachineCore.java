@@ -1,10 +1,10 @@
 package com.jemmerl.jemsmachinecore;
 
-import com.jemmerl.jemsmachinecore.client.gui.screen.TestScreen;
-import com.jemmerl.jemsmachinecore.init.JMCBlocks;
-import com.jemmerl.jemsmachinecore.init.JMCContainers;
-import com.jemmerl.jemsmachinecore.init.JMCItems;
-import com.jemmerl.jemsmachinecore.init.JMCTileEntities;
+import com.jemmerl.jemsmachinecore.test.client.gui.screen.TestScreen;
+import com.jemmerl.jemsmachinecore.test.init.TestModBlocks;
+import com.jemmerl.jemsmachinecore.test.init.TestModContainers;
+import com.jemmerl.jemsmachinecore.test.init.TestModItems;
+import com.jemmerl.jemsmachinecore.test.init.TestModTileEntities;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,10 +28,10 @@ public class JemsMachineCore
     public JemsMachineCore() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        JMCBlocks.register(eventBus);
-        JMCItems.register(eventBus);
-        JMCTileEntities.register(eventBus);
-        JMCContainers.register(eventBus);
+        TestModBlocks.register(eventBus);
+        TestModItems.register(eventBus);
+        TestModTileEntities.register(eventBus);
+        TestModContainers.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
@@ -46,7 +46,7 @@ public class JemsMachineCore
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        ScreenManager.registerFactory(JMCContainers.TEST_CONTAINER.get(), TestScreen::new);
+        ScreenManager.registerFactory(TestModContainers.TEST_CONTAINER.get(), TestScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

@@ -1,8 +1,9 @@
-package com.jemmerl.jemsmachinecore.block;
+package com.jemmerl.jemsmachinecore.lib.block;
 
-import com.jemmerl.jemsmachinecore.init.JMCTileEntities;
-import com.jemmerl.jemsmachinecore.inventory.container.TestContainer;
-import com.jemmerl.jemsmachinecore.tileentity.TestTileEntity;
+import com.jemmerl.jemsmachinecore.lib.tileentity.JMCTileEntity;
+import com.jemmerl.jemsmachinecore.lib.tileentity.JMCTileEntityUtil;
+import com.jemmerl.jemsmachinecore.test.init.TestModTileEntities;
+import com.jemmerl.jemsmachinecore.test.inventory.container.TestContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,18 +23,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class TestBlock extends Block {
-    public TestBlock(Properties properties) {
+public class JMCMachineBlock extends Block {
+
+    private final Supplier<? extends JMCTileEntity> teSupplier;
+
+    public JMCMachineBlock(Properties properties, Supplier<? extends JMCTileEntity> teSupplier) {
         super(properties);
+        this.teSupplier = teSupplier;
     }
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote()) {
             if (!player.isCrouching()) {
-                TileEntity tileEntity = worldIn.getTileEntity(pos);
-                if (tileEntity instanceof TestTileEntity) {
+                JMCTileEntity tileEntity = JMCTileEntityUtil.getJMCTileEntity(worldIn, pos);
+                if (tileEntity != null) {
                     INamedContainerProvider containerProvider = createContainer(worldIn, pos);
                     NetworkHooks.openGui(((ServerPlayerEntity) player), containerProvider, tileEntity.getPos());
                 } else {
@@ -70,6 +76,7 @@ public class TestBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return JMCTileEntities.TEST_TILE_ENTITY.get().create();
+        return teSupplier.get();
     }
+
 }

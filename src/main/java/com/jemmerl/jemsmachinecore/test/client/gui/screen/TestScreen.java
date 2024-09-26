@@ -1,7 +1,7 @@
-package com.jemmerl.jemsmachinecore.client.gui.screen;
+package com.jemmerl.jemsmachinecore.test.client.gui.screen;
 
 import com.jemmerl.jemsmachinecore.JemsMachineCore;
-import com.jemmerl.jemsmachinecore.inventory.container.TestContainer;
+import com.jemmerl.jemsmachinecore.test.inventory.container.TestContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;

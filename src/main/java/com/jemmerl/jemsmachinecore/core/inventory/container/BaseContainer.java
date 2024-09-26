@@ -1,7 +1,7 @@
-package com.jemmerl.jemsmachinecore.inventory.container;
+package com.jemmerl.jemsmachinecore.core.inventory.container;
 
 import com.jemmerl.jemsmachinecore.JemsMachineCore;
-import com.jemmerl.jemsmachinecore.init.JMCBlocks;
+import com.jemmerl.jemsmachinecore.test.init.TestModBlocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -44,7 +44,7 @@ public class BaseContainer extends Container {
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
         return isWithinUsableDistance(
-                IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerIn, JMCBlocks.TEST_BLOCK.get());
+                IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerIn, TestModBlocks.TEST_BLOCK.get());
     }
 
 

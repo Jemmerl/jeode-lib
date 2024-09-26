@@ -1,7 +1,7 @@
-package com.jemmerl.jemsmachinecore.init;
+package com.jemmerl.jemsmachinecore.test.init;
 
 import com.jemmerl.jemsmachinecore.JemsMachineCore;
-import com.jemmerl.jemsmachinecore.inventory.container.TestContainer;
+import com.jemmerl.jemsmachinecore.test.inventory.container.TestContainer;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class JMCContainers {
+public class TestModContainers {
 
     public static DeferredRegister<ContainerType<?>> CONTAINERS =
             DeferredRegister.create(ForgeRegistries.CONTAINERS, JemsMachineCore.MOD_ID);
