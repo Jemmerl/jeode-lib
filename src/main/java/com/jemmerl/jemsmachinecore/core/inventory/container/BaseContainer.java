@@ -8,43 +8,39 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class BaseContainer extends Container {
 
-    private final TileEntity tileEntity;
     private final PlayerEntity playerEntity;
     private final IItemHandler playerInventory;
 
+    private final IWorldPosCallable worldPosCallable;
+
+    // CONTAINERS GRAB SLOTS FROM THE TILE ENTITY AND PLAYER INVENTORY
+    // SLOTS MANAGE BASIC IO STUFF, KEEP TRACK OF THEIR EXISTENCE AND WHEN PLAYERS CAN ACCESS THEM
+    // ITEM HANDLERS DICTATE BEHAVIOR. SLOTS GET ITEM HANDLERS FROM TE
+
     public <T extends ContainerType<?>> BaseContainer(RegistryObject<T> containerType, int windowID, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity playerEntity) {
         super(containerType.get(), windowID);
-        this.tileEntity = world.getTileEntity(pos);
         this.playerEntity = playerEntity;
         this.playerInventory = new InvWrapper(playerInventory);
+        this.worldPosCallable = IWorldPosCallable.of(world, pos);
 
+        // Build slots from player inventory
         // TODO 8 pix from left of screen img, and 86 from top. This will vary based on screen, make variable based later
         layoutPlayerInventorySlots(8 , 86);
-
-        if (tileEntity != null) {
-            tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-                addSlot(new SlotItemHandler(h, 0, 80, 31));
-                addSlot(new SlotItemHandler(h, 1, 80, 53));
-            });
-        }
     }
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(
-                IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerIn, TestModBlocks.TEST_BLOCK.get());
+        return isWithinUsableDistance(worldPosCallable, playerIn, TestModBlocks.TEST_BLOCK.get());
     }
 
 

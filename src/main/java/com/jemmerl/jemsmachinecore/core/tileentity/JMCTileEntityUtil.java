@@ -1,4 +1,4 @@
-package com.jemmerl.jemsmachinecore.lib.tileentity;
+package com.jemmerl.jemsmachinecore.core.tileentity;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

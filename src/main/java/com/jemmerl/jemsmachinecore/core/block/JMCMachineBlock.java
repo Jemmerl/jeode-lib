@@ -1,10 +1,8 @@
-package com.jemmerl.jemsmachinecore.lib.block;
+package com.jemmerl.jemsmachinecore.core.block;
 
-import com.jemmerl.jemsmachinecore.lib.tileentity.JMCTileEntity;
-import com.jemmerl.jemsmachinecore.lib.tileentity.JMCTileEntityUtil;
-import com.jemmerl.jemsmachinecore.test.init.TestModTileEntities;
+import com.jemmerl.jemsmachinecore.core.tileentity.JMCTileEntity;
+import com.jemmerl.jemsmachinecore.core.tileentity.JMCTileEntityUtil;
 import com.jemmerl.jemsmachinecore.test.inventory.container.TestContainer;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -25,7 +23,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public class JMCMachineBlock extends Block {
+public class JMCMachineBlock extends JMCBasicBlock {
 
     private final Supplier<? extends JMCTileEntity> teSupplier;
 
