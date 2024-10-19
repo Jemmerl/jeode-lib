@@ -20,8 +20,7 @@ public class BaseContainer extends Container {
 
     private final PlayerEntity playerEntity;
     private final IItemHandler playerInventory;
-
-    private final IWorldPosCallable worldPosCallable;
+    protected final IWorldPosCallable worldPosCallable;
 
     // CONTAINERS GRAB SLOTS FROM THE TILE ENTITY AND PLAYER INVENTORY
     // SLOTS MANAGE BASIC IO STUFF, KEEP TRACK OF THEIR EXISTENCE AND WHEN PLAYERS CAN ACCESS THEM
@@ -40,7 +39,7 @@ public class BaseContainer extends Container {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(worldPosCallable, playerIn, TestModBlocks.TEST_BLOCK.get());
+        return true;
     }
 
 

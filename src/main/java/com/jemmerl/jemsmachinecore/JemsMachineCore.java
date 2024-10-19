@@ -1,10 +1,6 @@
 package com.jemmerl.jemsmachinecore;
 
-import com.jemmerl.jemsmachinecore.test.client.gui.screen.TestScreen;
-import com.jemmerl.jemsmachinecore.test.init.TestModBlocks;
-import com.jemmerl.jemsmachinecore.test.init.TestModContainers;
-import com.jemmerl.jemsmachinecore.test.init.TestModItems;
-import com.jemmerl.jemsmachinecore.test.init.TestModTileEntities;
+import com.jemmerl.jemsmachinecore.test.init.*;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,7 +42,7 @@ public class JemsMachineCore
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        ScreenManager.registerFactory(TestModContainers.TEST_CONTAINER.get(), TestScreen::new);
+        TestModScreens.registerScreens(event);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

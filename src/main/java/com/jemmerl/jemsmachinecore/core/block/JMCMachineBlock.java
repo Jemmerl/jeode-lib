@@ -2,13 +2,18 @@ package com.jemmerl.jemsmachinecore.core.block;
 
 import com.jemmerl.jemsmachinecore.core.tileentity.JMCTileEntity;
 import com.jemmerl.jemsmachinecore.core.tileentity.JMCTileEntityUtil;
+import com.jemmerl.jemsmachinecore.core.util.blockprops.ActiveStatus;
 import com.jemmerl.jemsmachinecore.test.inventory.container.TestContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.EnumProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -25,11 +30,26 @@ import java.util.function.Supplier;
 
 public class JMCMachineBlock extends JMCBasicBlock {
 
+    public static final EnumProperty<ActiveStatus> STATUS = EnumProperty.create("status", ActiveStatus.class);
+
     private final Supplier<? extends JMCTileEntity> teSupplier;
 
     public JMCMachineBlock(Properties properties, Supplier<? extends JMCTileEntity> teSupplier) {
         super(properties);
         this.teSupplier = teSupplier;
+        this.setDefaultState(this.stateContainer.getBaseState().with(STATUS, ActiveStatus.ON));
+    }
+
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        super.fillStateContainer(builder);
+        builder.add(STATUS);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        return this.getDefaultState().with(STATUS, ActiveStatus.ON);
     }
 
     @Override
@@ -39,7 +59,7 @@ public class JMCMachineBlock extends JMCBasicBlock {
                 JMCTileEntity tileEntity = JMCTileEntityUtil.getJMCTileEntity(worldIn, pos);
                 if (tileEntity != null) {
                     INamedContainerProvider containerProvider = createContainer(worldIn, pos);
-                    NetworkHooks.openGui(((ServerPlayerEntity) player), containerProvider, tileEntity.getPos());
+                    NetworkHooks.openGui(((ServerPlayerEntity) player), (INamedContainerProvider) tileEntity, tileEntity.getPos());
                 } else {
                     throw new IllegalStateException("error teehee");
                 }

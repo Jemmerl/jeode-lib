@@ -1,11 +1,14 @@
 package com.jemmerl.jemsmachinecore.core.tileentity;
 
 import com.jemmerl.jemsmachinecore.core.inventory.JMCInventoryHandler;
-import com.jemmerl.jemsmachinecore.test.inventory.IInventoryCallback;
+import com.jemmerl.jemsmachinecore.core.inventory.IInventoryCallback;
 import net.minecraft.block.BlockState;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -13,7 +16,7 @@ import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 
-public class JMCTileEntity extends TileEntity implements IInventoryCallback {
+public abstract class JMCTileEntity extends TileEntity implements IInventoryCallback, INamedContainerProvider {
 
     protected JMCInventoryHandler inventoryHandler;
     private LazyOptional<IItemHandler> invHandlerCap = LazyOptional.empty();
@@ -36,6 +39,11 @@ public class JMCTileEntity extends TileEntity implements IInventoryCallback {
             return invHandlerCap.cast();
         }
         return super.getCapability(cap);
+    }
+
+    @Override
+    public ITextComponent getDisplayName() {
+        return new TranslationTextComponent(this.getBlockState().getBlock().getTranslationKey());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jemmerl.jemsmachinecore.test.inventory;
+package com.jemmerl.jemsmachinecore.core.inventory;
 
 public interface IInventoryCallback {
 

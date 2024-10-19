@@ -1,0 +1,70 @@
+{
+  "variants": {
+    "facing=east,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 90
+    },
+    "facing=east,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 90
+    },
+    "facing=east,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 90
+    },
+    "facing=north,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_test"
+    },
+    "facing=north,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_test"
+    },
+    "facing=north,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_test"
+    },
+    "facing=south,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 180
+    },
+    "facing=south,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 180
+    },
+    "facing=south,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 180
+    },
+    "facing=west,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 270
+    },
+    "facing=west,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 270
+    },
+    "facing=west,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_test",
+      "y": 270
+    },
+    "facing=up,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test"
+    },
+    "facing=up,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test"
+    },
+    "facing=up,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test"
+    },
+    "facing=down,status=off": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test",
+      "x": 180
+    },
+    "facing=down,status=on": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test",
+      "x": 180
+    },
+    "facing=down,status=active": {
+      "model": "jemsmachinecore:block/six_way_machine_vert_test",
+      "x": 180
+    }
+  }
+}

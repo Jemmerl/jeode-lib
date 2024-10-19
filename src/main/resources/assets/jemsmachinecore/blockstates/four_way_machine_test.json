@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=east,status=off": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 270
+    },
+    "facing=east,status=on": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 270
+    },
+    "facing=east,status=active": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 270
+    },
+    "facing=north,status=off": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 180
+    },
+    "facing=north,status=on": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 180
+    },
+    "facing=north,status=active": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 180
+    },
+    "facing=south,status=off": {
+      "model": "jemsmachinecore:block/four_way_machine_test"
+    },
+    "facing=south,status=on": {
+      "model": "jemsmachinecore:block/four_way_machine_test"
+    },
+    "facing=south,status=active": {
+      "model": "jemsmachinecore:block/four_way_machine_test"
+    },
+    "facing=west,status=off": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 90
+    },
+    "facing=west,status=on": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 90
+    },
+    "facing=west,status=active": {
+      "model": "jemsmachinecore:block/four_way_machine_test",
+      "y": 90
+    }
+  }
+}

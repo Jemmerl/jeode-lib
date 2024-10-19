@@ -2,6 +2,8 @@ package com.jemmerl.jemsmachinecore.test.init;
 
 import com.jemmerl.jemsmachinecore.JemsMachineCore;
 import com.jemmerl.jemsmachinecore.test.block.TestBlock;
+import com.jemmerl.jemsmachinecore.test.block.TestBlock4;
+import com.jemmerl.jemsmachinecore.test.block.TestBlock6;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -21,6 +23,10 @@ public class TestModBlocks {
 
     public static final RegistryObject<Block> TEST_BLOCK = registerBlock("test_block",
             () -> new TestBlock(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)), ItemGroup.MISC);
+    public static final RegistryObject<Block> TEST_BLOCK_4 = registerBlock("four_way_machine_test",
+            () -> new TestBlock4(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)), ItemGroup.MISC);
+    public static final RegistryObject<Block> TEST_BLOCK_6 = registerBlock("six_way_machine_test",
+            () -> new TestBlock6(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)), ItemGroup.MISC);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

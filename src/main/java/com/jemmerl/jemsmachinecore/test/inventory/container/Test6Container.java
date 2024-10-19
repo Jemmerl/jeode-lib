@@ -11,12 +11,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TestContainer extends BaseContainer {
+public class Test6Container extends BaseContainer {
 
     private final BasicMachineTE tileEntity;
 
-    public TestContainer(int windowID, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-        super(TestModContainers.TEST_CONTAINER, windowID, world, pos, playerInventory, playerEntity);
+    public Test6Container(int windowID, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+        super(TestModContainers.TEST_6_CONTAINER, windowID, world, pos, playerInventory, playerEntity);
 
         this.tileEntity = (BasicMachineTE) world.getTileEntity(pos);
         // Build slots from TE
@@ -31,6 +31,6 @@ public class TestContainer extends BaseContainer {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(worldPosCallable, playerIn, TestModBlocks.TEST_BLOCK.get());
+        return isWithinUsableDistance(worldPosCallable, playerIn, TestModBlocks.TEST_BLOCK_6.get());
     }
 }
