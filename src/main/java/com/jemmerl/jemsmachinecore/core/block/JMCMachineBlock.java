@@ -58,7 +58,6 @@ public class JMCMachineBlock extends JMCBasicBlock {
             if (!player.isCrouching()) {
                 JMCTileEntity tileEntity = JMCTileEntityUtil.getJMCTileEntity(worldIn, pos);
                 if (tileEntity != null) {
-                    INamedContainerProvider containerProvider = createContainer(worldIn, pos);
                     NetworkHooks.openGui(((ServerPlayerEntity) player), (INamedContainerProvider) tileEntity, tileEntity.getPos());
                 } else {
                     throw new IllegalStateException("error teehee");
@@ -69,21 +68,6 @@ public class JMCMachineBlock extends JMCBasicBlock {
 
         }
         return ActionResultType.SUCCESS;
-    }
-
-    private INamedContainerProvider createContainer(World worldIn, BlockPos pos) {
-        return new INamedContainerProvider() {
-            @Override
-            public ITextComponent getDisplayName() {
-                return new TranslationTextComponent("screen.jemsmachincore.test_screen");
-            }
-
-            @Nullable
-            @Override
-            public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                return new TestContainer(i, worldIn, pos, playerInventory, playerEntity);
-            }
-        };
     }
 
     @Override

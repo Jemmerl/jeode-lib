@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 // Individual item handlers for each slot
-public class JMCSlotHandler implements IItemHandler {
+public class JMCBasicSlotHandler implements IItemHandler {
 
     @Nonnull
     private ItemStack item = ItemStack.EMPTY;
@@ -18,22 +18,22 @@ public class JMCSlotHandler implements IItemHandler {
     private int slotLimit;
     private Set<Item> slotValidItems;
 
-    public JMCSlotHandler(int slotLimit, Set<Item> slotValidItems) {
+    public JMCBasicSlotHandler(int slotLimit, Set<Item> slotValidItems) {
         this.slotLimit = slotLimit;
         this.slotValidItems = slotValidItems;
     }
 
-    public JMCSlotHandler(Set<Item> slotValidItems) {
+    public JMCBasicSlotHandler(Set<Item> slotValidItems) {
         this.slotLimit = 0;
         this.slotValidItems = slotValidItems;
     }
 
-    public JMCSlotHandler(int slotLimit) {
+    public JMCBasicSlotHandler(int slotLimit) {
         this.slotLimit = slotLimit;
         this.slotValidItems = new HashSet<>();
     }
 
-    public JMCSlotHandler() {
+    public JMCBasicSlotHandler() {
         this(0);
     }
 
@@ -58,7 +58,7 @@ public class JMCSlotHandler implements IItemHandler {
         return (slotLimit > 0) ? slotLimit : item.getMaxStackSize();
     }
 
-    public JMCSlotHandler setSlotLimit(int limit) {
+    public JMCBasicSlotHandler setSlotLimit(int limit) {
         this.slotLimit = Math.min(1, limit);
         return this;
     }
@@ -72,7 +72,7 @@ public class JMCSlotHandler implements IItemHandler {
         return slotValidItems;
     }
 
-    public JMCSlotHandler setSlotValidItems(Set<Item> validItems) {
+    public JMCBasicSlotHandler setSlotValidItems(Set<Item> validItems) {
         slotValidItems = validItems;
         return this;
     }

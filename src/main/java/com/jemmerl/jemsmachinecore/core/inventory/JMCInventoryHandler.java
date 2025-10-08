@@ -15,7 +15,7 @@ import java.util.List;
 // extends ItemStackHandler
 public class JMCInventoryHandler implements IItemHandlerModifiable, INBTSerializable<CompoundNBT> {
 
-    private final List<JMCSlotHandler> slots;
+    private final List<JMCBasicSlotHandler> slots;
     private final IInventoryCallback inventoryCallback;
 
     public JMCInventoryHandler(int size) {
@@ -39,7 +39,7 @@ public class JMCInventoryHandler implements IItemHandlerModifiable, INBTSerializ
         }
     }
 
-    public void addSlot(JMCSlotHandler newSlot) {
+    public void addSlot(JMCBasicSlotHandler newSlot) {
         slots.add(newSlot);
     }
 
@@ -48,7 +48,7 @@ public class JMCInventoryHandler implements IItemHandlerModifiable, INBTSerializ
         return slots.size();
     }
 
-    public JMCSlotHandler getSlot(int slot) {
+    public JMCBasicSlotHandler getSlot(int slot) {
         return slots.get(slot);
     }
 

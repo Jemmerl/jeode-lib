@@ -13,7 +13,7 @@ import net.minecraft.util.Direction;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public class JMC6WayMachineBlock extends JMCMachineBlock{
+public abstract class JMC6WayMachineBlock extends JMCMachineBlock{
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 

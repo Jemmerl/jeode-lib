@@ -42,11 +42,6 @@ public abstract class JMCTileEntity extends TileEntity implements IInventoryCall
     }
 
     @Override
-    public ITextComponent getDisplayName() {
-        return new TranslationTextComponent(this.getBlockState().getBlock().getTranslationKey());
-    }
-
-    @Override
     public void read(BlockState state, CompoundNBT nbt) {
         inventoryHandler.deserializeNBT(nbt.getCompound("inv"));
         super.read(state, nbt);
